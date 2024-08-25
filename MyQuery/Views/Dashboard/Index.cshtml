@@ -1,0 +1,558 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+@using Synergy_Test.Function
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@inject IHttpContextAccessor Accessor;
+@model LoginModel
+
+@{
+    var role = HttpContextAccessor.HttpContext.Session.GetString("Role");
+    var username = HttpContextAccessor.HttpContext.Session.GetString("Username");
+    var profilephoto = HttpContextAccessor.HttpContext.Session.GetString("ProfilePhoto");
+}
+<style>
+    #tip {
+        display: none;
+    }
+
+        #tip.show {
+            display: block;
+        }
+</style>
+
+<body>
+    <div class="container">
+        <h1 style="margin-top: 100px;" class="arialrounded">SQL Query</h1>
+        <h3 class="lead">Execute and manage query based on your needs</h3>
+
+    </div>
+
+    <div class="container mt-3 mb-5" style="background-color: #CECECE; border-radius: 20px; padding: 10px;">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="query-tab" data-bs-toggle="tab" data-bs-target="#querytab" type="button" role="tab" aria-controls="query" aria-selected="true">Query</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="request-tab" data-bs-toggle="tab" data-bs-target="#requesttab" type="button" role="tab" aria-controls="request" aria-selected="false">Execution Request</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="querytab" role="tabpanel" aria-labelledby="query-tab">
+
+                <h3 class="mt-3 mb-3 arialrounded">Query</h3>
+                <form id="queryForm">
+                    <div class="d-flex justify-content-between mb-2 mt-3">
+                        <h5>Enter your query here</h5>
+                        <a href="https://aihelperbot.com/app" target="_blank" class="btn btn-info"><i class="fa fa-robot"></i> ASK AI</a>
+                    </div>
+               
+                    <div>
+                        <textarea id="query" class="form-control" name="query" rows="4" cols="50" oninput="toggleButtons()"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <button class="btn btn-secondary mt-3" type="button" onclick="executeQuery()"><i class="fa fa-play"></i> OK</button>
+                            <button class="btn btn-danger mt-3" type="button" onclick="clearQuery()" id="btnClear" disabled><i class="fa fa-times"></i> Cancel</button>
+                        </div>
+                        <div>
+                            <button class="btn btn-secondary mt-3" type="button" id="btnAdd"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
+                            <button class="btn btn-secondary mt-3" type="button" onclick="LoadQuery('@username')"><i class="fa fa-tasks" aria-hidden="true"></i> Load</button>
+                            <button class="btn btn-secondary mt-3" type="button" id="btnShare"><i class="fa fa-share" aria-hidden="true"></i> Share</button>
+                        </div>
+                    </div>
+
+                    <p id="tip" class="lead">Your browser does not support Share API. Share the query manually instead</p>
+
+                 
+
+                </form>
+
+
+                <div id="message" class="mt-3">
+ 
+                </div>
+
+                <div id="result">
+
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade" id="requesttab" role="tabpanel" aria-labelledby="request-tab">
+                <h3 class="mt-3 mb-3 arialrounded">Query Execution Request</h3>
+                <table class="table table-bordered table-primary table-hover mt-4">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Requester</th>
+                            <th>Status</th>
+                            <th>Submitted Date</th>
+                            <th>Executed Date</th>
+                            <th>SQL Query</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- View request Modal -->
+    <div class="modal fade" id="viewrequestModal" tabindex="-1" role="dialog" data-aos="fade-down" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewrequestModalTitle">View Requested Query</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-2">
+                        <label>NO</label>
+                        <input type="text" id="no" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Requester</label>
+                        <input type="text" id="requester" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Status</label>
+                        <input type="text" id="status" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Submitted Date</label>
+                        <input type="text" id="submitteddate" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Executed Date</label>
+                        <input type="text" id="executeddate" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>SQL Query</label>
+                        <textarea id="sqlquery" class="form-control" rows="5" readonly disabled></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Save Query Modal -->
+    <div class="modal fade" id="saveQueryModal" tabindex="-1" role="dialog" data-aos="fade-down" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="savemodalTitle">Save Query</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>This will save the current query as a present which you can access later or share with others</h5>
+                    <form>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label>Inputted Query</label>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" id="savedQuery" placeholder="Inputted Query" readonly disabled>
+                                </div>
+                            </div>
+                   
+                           
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="savedName" aria-describedby="emailHelp" placeholder="Save Name">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="SaveQuery('@username')">Save Query</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Saved Query Modal -->
+    <div class="modal fade" id="loadQueryModal" tabindex="-1" role="dialog" data-aos="fade-down" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loadquerymodalTitle">List of Queries</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul id="savedQueryList" class="list-group">
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+@section Scripts {
+    <script>
+        function executeQuery() {
+            var query = $('#query').val();
+            var username = '@username'; 
+
+            $.ajax({
+                url: '@Url.Action("ExecuteQuery", "Dashboard")',
+                type: 'POST',
+                data: { query: query },
+                success: function (result) {
+                    if (result.startsWith("<table")) {
+
+                        $('#message').empty();
+                        $('#result').html(result);
+                    } else if (result.startsWith("You can run SELECT query")) {
+
+                        var content =
+                            '<div class="d-flex justify-content-between align-items-center">' +
+                            '<div>' +
+                            '<span class="text-danger">' + result + '</span>' +
+                            '</div>' +
+                            '<div>' +
+                            '<button onclick="submitQuery(\'' + username + '\')" class="btn btn-primary">Submit to Administrator</button>' +
+                            '</div>' +
+                            '</div>';
+                        $('#message').html(content);
+                        $('#result').empty();
+
+                    } else {
+ 
+                        var message = result.startsWith("Invalid query")
+                            ? "Invalid query. Please input a valid SELECT query."
+                            : result;
+                        $('#message').html('<span class="text-danger">' + message + '</span>');
+                        $('#result').empty();
+                        $('#submitToAdminBtn').remove();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        }
+
+
+        function toggleButtons() {
+            var queryText = document.getElementById('query').value.trim();
+            var btnClear = document.getElementById('btnClear');
+            var btnAdd = document.getElementById('btnAdd');
+             var btnShare = document.getElementById('btnShare');
+
+            if (queryText.length > 0) {
+                btnClear.disabled = false;
+                btnAdd.disabled = false;
+                btnShare.disabled = false;
+            } else {
+                btnClear.disabled = true;
+                btnAdd.disabled = true;
+                btnShare.disabled = true;
+            }
+        }
+
+        function clearQuery() {
+            document.getElementById('query').value = '';
+            document.getElementById('btnClear').disabled = true;
+            document.getElementById('btnAdd').disabled = true;
+        }
+
+        $('#btnAdd').click(function () {
+            var query = $('#query').val().trim(); 
+
+            if (!query || !isSelectQuery(query)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Permintaan ditolak',
+                    text: 'Mohon masukkan query SELECT yang valid.'
+                });
+                return;
+            }
+
+            $('#saveQueryModal').modal('show');
+            $('#modalTitle').text('Save Query');
+            $('#savedQuery').val(query);
+        });
+
+        function SaveQuery(username) {
+            var savedname = $('#savedName').val();
+            var savedquery = $('#savedQuery').val();
+            var status = 'Saved';
+
+            var saveData = {
+                SavedName: savedname,
+                SavedQuery: savedquery,
+                Username: username,
+                Status: status
+            };
+
+            Swal.fire({
+                title: "Do you want to save this query?",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonText: "Save",
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("SaveQuery", "Dashboard")',
+                        type: 'POST',
+                        data: saveData,
+                        success: function (response) {
+                            Swal.fire({
+                                title: "Query Saved",
+                                icon: "success"
+                            }).then((result) => {
+                                if (result.isConfirmed || result.dismiss === Swal.DismissReason.close) {
+                                    window.location.reload(true);
+                                }
+                            });
+                       
+                        },
+                        error: function (xhr, status, error) {
+                            Swal.fire('Error!', 'Failed to send request: ' + error, 'error');
+                        }
+                    });
+                    Swal.fire("Saved!", "", "success");
+                } else if (result.isDenied) {
+                    Swal.fire("Changes are not saved", "", "info");
+                }
+            });
+        }
+        function LoadQuery(username) {
+            $('#loadQueryModal').modal('show');
+            $.ajax({
+                url: '@Url.Action("GetSavedQueryByUser", "Dashboard")',
+                type: 'GET',
+                data: { username: username },
+                dataType: 'json',
+                success: function (data) {
+
+                    $('#savedQueryList').empty();
+
+                    $('#loadquerymodalTitle').text('Queries of ' + username + '');
+
+                    $.each(data, function (index, item) {
+                        var listItem = $('<li class="list-group-item"></li>').text(item.savedName);
+                        listItem.click(function () {
+                            $('#query').val(item.savedQuery);
+                            $('#loadQueryModal').modal('hide');
+                        });
+                        $('#savedQueryList').append(listItem);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error: ' + error);
+                }
+            });
+        }
+
+        const share = e => {
+            const queryText = document.getElementById("query").value;
+            const baseUrl = "@Url.Action("SharedQuery", "Dashboard")";
+            const fullUrl = `${baseUrl}?query=${encodeURIComponent(queryText)}`;
+
+            if (navigator.share) {
+                navigator
+                    .share({
+                        title: "Share query",
+                        text: "Query : ${queryText}",
+                        url: fullUrl
+                    })
+                    .then(() => console.log("Query has been shared!"))
+                    .catch(error => console.log("Error!", error));
+            }
+        };
+
+        if (!navigator.share) {
+            document.getElementById('tip').className = 'show';
+        }
+
+        document.getElementById("btnShare").addEventListener("click", share);
+
+
+
+        function isSelectQuery(query) {
+            var firstWord = query.trim().split(/\s+/)[0].toLowerCase();
+            return firstWord === 'select';
+        }
+
+        function submitQuery(Username) {
+            var status = "Pending"; 
+            var sqlQuery = $('#query').val();
+
+            var requestData = {
+                Requester: Username,
+                Status: status,
+                //SubmittedDate: submittedDate,
+                //ExecutedDate: executedDate,
+                SQLQuery: sqlQuery
+            };
+
+            Swal.fire({
+                icon: 'question',
+                title: 'Submit to Administrator?',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+        
+                    $.ajax({
+                        url: '@Url.Action("RequestedQuery", "Dashboard")',
+                        type: 'POST',
+                        data: requestData,
+                        success: function (response) {
+                            Swal.fire({
+                                title: "Query Requested",
+                                text: 'Please wait for administrator approval',
+                                icon: "success"
+                            }).then((result) => {
+                                if (result.isConfirmed || result.dismiss === Swal.DismissReason.close) {
+                                    window.location.reload(true);
+                                }
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            Swal.fire('Error!', 'Failed to send request: ' + error, 'error');
+                        }
+                    });
+                }
+            });
+        }
+        
+        $(document).ready(function () {
+            var requester_username = '@username';
+            GetRequestedQueriesByUsername(requester_username);
+            toggleButtons();
+        });
+
+        function GetRequestedQueriesByUsername(requester_username) {
+
+            $.ajax({
+                url: '@Url.Action("GetRequestedQueriesByUsername", "Dashboard")',
+                type: 'GET',
+                dataType: 'json',
+                data: { requester_username: requester_username },
+                success: function (response) {
+                    console.log(response);
+                    var tableBody = $('#tblBody');
+                    tableBody.empty();
+                    if (response == null || response.length === 0) {
+                        var object = '<tr><td colspan="7">Data is not available</td></tr>';
+                        tableBody.html(object);
+                    }
+                    else if (response.error) {
+                        alert('Error: ' + response.error);
+                    } else {
+           
+                        for (var i = 0; i < response.length; i++) {
+                            var item = response[i];
+
+                            var no = $('<td></td>').text(item.no);
+                            var requester = $('<td></td>').text(item.requester);
+
+            
+                            var statusBadge;
+                            if (item.status === 'Pending') {
+                                statusBadge = $('<span class="badge badge-warning"><i class="fa fa-clock"></i> Pending</span>');
+                            } else if (item.status === 'Approved') {
+                                statusBadge = $('<span class="badge badge-success"><i class="fa fa-check"></i> Approved</span>');
+                            } else if (item.status === 'Rejected') {
+                                statusBadge = $('<span class="badge badge-danger"><i class="fa fa-times"></i> Rejected</span>');
+                            } else {
+                                statusBadge = $('<span></span>').text(item.status); 
+                            }
+                            var status = $('<td></td>').append(statusBadge);
+
+                            var submittedDate = item.submittedDate ? new Date(item.submittedDate).toLocaleString() : 'N/A';
+                            var executedDate = item.executedDate ? new Date(item.executedDate).toLocaleString() : 'N/A';
+                            var sqlQuery = $('<td></td>').text(item.sqlQuery);
+
+            
+                            var viewButton = $('<a href="#" class="btn btn-primary btn-sm" style="margin: 5px;" onclick="ViewRequest(\'' + item.requester + '\', ' + item.no + ')"></a>').text(' View').prepend($('<i></i>').addClass('fa fa-eye').attr('aria-hidden', 'true'));
+
+                            var actionCell = $('<td></td>').append(viewButton);
+
+                   
+                            var tableRow = $('<tr></tr>');
+                            tableRow.append(no);
+                            tableRow.append(requester);
+                            tableRow.append(status);
+                            tableRow.append('<td>' + submittedDate + '</td>');
+                            tableRow.append('<td>' + executedDate + '</td>');
+                            tableRow.append(sqlQuery);
+                            tableRow.append(actionCell);
+
+                    
+                            tableBody.append(tableRow);
+
+                        }
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        }
+
+        var requester_username = '@username';
+
+        function ViewRequest(username, no) {
+            $.ajax({
+                url: '@Url.Action("GetRequestedQueriesByUsernameDetail", "Dashboard")',
+                type: 'GET',
+                dataType: 'json',
+                data: { requester_username: username, no: no },
+                success: function (response) {
+                    if (response && response.length > 0) { 
+                        var data = response[0]; 
+
+                        $('#viewrequestModal').modal('show');
+                        $('#viewrequestModalTitle').text('View Requested Query');
+                        $('#no').val(data.no);
+                        $('#requester').val(data.requester);
+                        $('#status').val(data.status);
+                        $('#submitteddate').val(data.submittedDate ? new Date(data.submittedDate).toLocaleString() : 'N/A');
+                        $('#executeddate').val(data.executedDate ? new Date(data.executedDate).toLocaleString() : 'N/A');
+                        $('#sqlquery').val(data.sqlQuery);
+                    } else {
+                        Swal.fire({ icon: 'error', title: 'Error', text: 'Data is not available', type: 'error' });
+                    }
+                },
+                error: function () {
+                    Swal.fire({ icon: 'error', title: 'Error', text: 'Unable to read or update data', type: 'error' });
+                }
+            });
+        }
+
+
+
+
+
+
+
+    </script>
+           
+
+}

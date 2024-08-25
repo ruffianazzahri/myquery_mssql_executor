@@ -1,0 +1,294 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+@using Synergy_Test.Function
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@inject IHttpContextAccessor Accessor;
+@model LoginModel
+
+@{
+    var role = HttpContextAccessor.HttpContext.Session.GetString("Role");
+    var username = HttpContextAccessor.HttpContext.Session.GetString("Username");
+    var profilephoto = HttpContextAccessor.HttpContext.Session.GetString("ProfilePhoto");
+}
+
+
+<body>
+    <div class="container">
+        <h1 style="margin-top: 100px;" class="arialrounded">SQL Query</h1>
+        <h3 class="lead">Execute and manage query based on your needs</h3>
+    </div>
+
+
+    <div class="container mt-3 mb-5" style="background-color: #CECECE; border-radius: 20px; padding: 10px;">
+        <h3 class="mt-3 mb-3 arialrounded">Query Execution Request</h3>
+
+        <table class="table table-bordered mt-5 table-hover table-primary">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Requester</th>
+                            <th>Status</th>
+                            <th>Submitted Date</th>
+                            <th>Executed Date</th>
+                            <th>SQL Query</th>
+                            <th style="width:20%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblBody">
+                    </tbody>
+                </table>
+     </div>
+   
+
+
+    <!-- View request Modal -->
+    <div class="modal fade" id="viewrequestModal" tabindex="-1" role="dialog" data-aos="fade-down" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewrequestModalTitle">View Requested Query</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-2">
+                        <label>NO</label>
+                        <input type="text" id="no" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Requester</label>
+                        <input type="text" id="requester" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Status</label>
+                        <input type="text" id="status" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Submitted Date</label>
+                        <input type="text" id="submitteddate" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>Executed Date</label>
+                        <input type="text" id="executeddate" class="form-control" readonly disabled />
+                    </div>
+                    <div class="mb-2">
+                        <label>SQL Query</label>
+                        <textarea id="sqlquery" class="form-control" rows="5" readonly disabled></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            GetRequestedQueriesByUsername();
+        });
+
+        function GetRequestedQueriesByUsername() {
+
+            $.ajax({
+                url: '@Url.Action("GetRequestedQueries", "Dashboard")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    var tableBody = $('#tblBody');
+                    tableBody.empty();
+                    if (response == null || response.length === 0) {
+                        var object = '<tr><td colspan="7">Data is not available</td></tr>';
+                        tableBody.html(object);
+                    }
+                    else if (response.error) {
+                        alert('Error: ' + response.error);
+                    } else {
+     
+                        for (var i = 0; i < response.length; i++) {
+                            var item = response[i];
+
+                            var no = $('<td></td>').text(item.no);
+                            var requester = $('<td></td>').text(item.requester);
+
+                            var statusBadge;
+                            if (item.status === 'Pending') {
+                                statusBadge = $('<span class="badge badge-warning"><i class="fa fa-clock"></i> Pending</span>');
+                            } else if (item.status === 'Approved') {
+                                statusBadge = $('<span class="badge badge-success"><i class="fa fa-check"></i> Approved</span>');
+                            } else if (item.status === 'Rejected') {
+                                statusBadge = $('<span class="badge badge-danger"><i class="fa fa-times"></i> Rejected</span>');
+                            } else {
+                                statusBadge = $('<span></span>').text(item.status); 
+                            }
+                            var status = $('<td></td>').append(statusBadge);
+
+                            var submittedDate = item.submittedDate ? new Date(item.submittedDate).toLocaleString() : 'N/A';
+                            var executedDate = item.executedDate ? new Date(item.executedDate).toLocaleString() : 'N/A';
+                            var sqlQuery = $('<td></td>').text(item.sqlQuery);
+
+
+                            var viewButton = $('<a href="#" class="btn btn-primary btn-sm" style="margin: 5px;" onclick="ViewRequest(\'' + item.requester + '\', ' + item.no + ')"></a>').text('').prepend($('<i></i>').addClass('fa fa-eye').attr('aria-hidden', 'true'));
+
+                            var approveButton = $('<button class="btn btn-success btn-sm" style="margin: 5px;" onclick="ApproveRequest(' + item.no + ')"></button>').text('').prepend($('<i></i>').addClass('fa fa-check').attr('aria-hidden', 'true'));
+
+                            var rejectButton = $('<button class="btn btn-danger btn-sm" style="margin: 5px;" onclick="RejectRequest(' + item.no + ')"></button>').text('').prepend($('<i></i>').addClass('fa fa-times').attr('aria-hidden', 'true'));
+
+
+                            var actionCell = $('<td></td>').append(viewButton).append(approveButton).append(rejectButton);
+
+                            var tableRow = $('<tr></tr>');
+                            tableRow.append(no);
+                            tableRow.append(requester);
+                            tableRow.append(status);
+                            tableRow.append('<td>' + submittedDate + '</td>');
+                            tableRow.append('<td>' + executedDate + '</td>');
+                            tableRow.append(sqlQuery);
+                            tableRow.append(actionCell);
+
+                            tableBody.append(tableRow);
+
+                        }
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        }
+
+        var requester_username = '@username';
+
+        function ViewRequest(username, no) {
+            $.ajax({
+                url: '@Url.Action("GetRequestedQueriesByUsernameDetail", "Dashboard")',
+                type: 'GET',
+                dataType: 'json',
+                data: { requester_username: username, no: no },
+                success: function (response) {
+                    if (response && response.length > 0) {
+                        var data = response[0];
+
+                        $('#viewrequestModal').modal('show');
+                        $('#viewrequestModalTitle').text('View Requested Query');
+                        $('#no').val(data.no);
+                        $('#requester').val(data.requester);
+                        $('#status').val(data.status);
+                        $('#submitteddate').val(data.submittedDate ? new Date(data.submittedDate).toLocaleString() : 'N/A');
+                        $('#executeddate').val(data.executedDate ? new Date(data.executedDate).toLocaleString() : 'N/A');
+                        $('#sqlquery').val(data.sqlQuery);
+                    } else {
+                        Swal.fire({ icon: 'error', title: 'Error', text: 'Data is not available', type: 'error' });
+                    }
+                },
+                error: function () {
+                    Swal.fire({ icon: 'error', title: 'Error', text: 'Unable to read or update data', type: 'error' });
+                }
+            });
+        }
+
+        function ApproveRequest(no) {
+            Swal.fire({
+                title: "Are you sure to approve this query request?",
+                icon: 'info',
+                showDenyButton: true,
+                confirmButtonText: "Approve",
+                denyButtonText: `Cancel`
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("ApproveRequestedQuery", "Dashboard")',
+                        type: 'POST',
+                        data: { queryNo: no },
+                        success: function (response) {
+                            console.error(response);
+                            Swal.fire({
+                                title: "The query is approved",
+                                icon: "success"
+                            }).then((result) => {
+                                if (result.isConfirmed || result.dismiss === Swal.DismissReason.close) {
+                                    window.location.reload(true);
+                                }
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(error);
+                            Swal.fire({
+                                title: "Failed to approve query.",
+                                icon: "error"
+                            }).then((result) => {
+                                if (result.isConfirmed || result.dismiss === Swal.DismissReason.close) {
+                                    window.location.reload(true);
+                                }
+                            });
+                        }
+                    });
+
+
+                } else if (result.isDenied) {
+                    Swal.fire("The query is not approved", "", "info");
+                }
+            });
+        }
+
+        function RejectRequest(no) {
+            Swal.fire({
+                title: "Are you sure to reject this query request?",
+                icon: 'info',
+                showDenyButton: true,
+                confirmButtonText: "Reject",
+                denyButtonText: `Cancel`
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("RejectRequestedQuery", "Dashboard")',
+                        type: 'POST',
+                        data: { queryNo: no },
+                        success: function (response) {
+                            console.error(response);
+                            Swal.fire({
+                                title: "The query is rejected",
+                                icon: "success"
+                            }).then((result) => {
+                                if (result.isConfirmed || result.dismiss === Swal.DismissReason.close) {
+                                    window.location.reload(true);
+                                }
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(error);
+                            Swal.fire({
+                                title: "Failed to reject query.",
+                                icon: "error"
+                            }).then((result) => {
+                                if (result.isConfirmed || result.dismiss === Swal.DismissReason.close) {
+                                    window.location.reload(true);
+                                }
+                            });
+                        }
+                    });
+
+
+                } else if (result.isDenied) {
+                    Swal.fire("The query is not rejected", "", "info");
+                }
+            });
+        }
+
+
+
+
+
+
+    </script>
+           
+
+}

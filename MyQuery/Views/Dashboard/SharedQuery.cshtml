@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+@using Synergy_Test.Function
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@inject IHttpContextAccessor Accessor;
+@model LoginModel
+
+@{
+    var role = HttpContextAccessor.HttpContext.Session.GetString("Role");
+    var username = HttpContextAccessor.HttpContext.Session.GetString("Username");
+    var profilephoto = HttpContextAccessor.HttpContext.Session.GetString("ProfilePhoto");
+}
+
+
+    @if (HttpContextAccessor.HttpContext.Session.GetString("Role") == "User")
+{
+    <h1>Shared Query by @username</h1>
+    <p id="queryText"></p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get('query');
+
+        document.getElementById('queryText').textContent = query;
+    </script>
+
+
+}
+
+else
+{
+    <script>
+        window.location.href = "@Url.Action("Index", "Login")";
+    </script>
+}
