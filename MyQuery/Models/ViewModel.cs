@@ -1,4 +1,4 @@
-﻿namespace Synergy_Test.Models
+﻿namespace MyQuery.Models
 {
     public class ViewModel
     {

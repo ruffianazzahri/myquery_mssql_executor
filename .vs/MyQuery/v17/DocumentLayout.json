@@ -1,26 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\",
+  "WorkspaceRootPath": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\documents\\myquery\\myquery\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\documents\\myquery\\myquery\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\models\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\models\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\models\\savequerymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\models\\savequerymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\models\\requestedquerymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\models\\requestedquerymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\models\\dataappsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\models\\dataappsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\documents\\myquery\\myquery\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\documents\\myquery\\myquery\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\onedrive\\documents\\github\\myquery_mssql_executor\\myquery\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|c:\\users\\zephyrus g14\\documents\\myquery\\myquery\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{07781E7D-FB39-4532-9B08-39A488D6E9B8}|MyQuery\\MyQuery.csproj|solutionrelative:myquery\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,76 +62,177 @@
       "DocumentGroups": [
         {
           "DockedWidth": 139,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Views\\Dashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "MyQuery\\Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Views\\Dashboard\\Index.cshtml",
+              "RelativeToolTip": "MyQuery\\Views\\Dashboard\\Index.cshtml",
+              "ViewState": "AgIAACsBAAAAAAAAAAAAACICAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-15T16:42:39.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Views\\Login\\Index.cshtml",
+              "RelativeDocumentMoniker": "MyQuery\\Views\\Login\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Views\\Login\\Index.cshtml",
+              "RelativeToolTip": "MyQuery\\Views\\Login\\Index.cshtml",
+              "ViewState": "AgIAADcAAAAAAAAAAAAmwHMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-15T16:39:46.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\ViewModel.cs",
+              "RelativeDocumentMoniker": "MyQuery\\Models\\ViewModel.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\ViewModel.cs",
+              "RelativeToolTip": "MyQuery\\Models\\ViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-15T16:34:16.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SaveQueryModel.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\SaveQueryModel.cs",
+              "RelativeDocumentMoniker": "MyQuery\\Models\\SaveQueryModel.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\SaveQueryModel.cs",
+              "RelativeToolTip": "MyQuery\\Models\\SaveQueryModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-15T16:34:13.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RequestedQueryModel.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\RequestedQueryModel.cs",
+              "RelativeDocumentMoniker": "MyQuery\\Models\\RequestedQueryModel.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\RequestedQueryModel.cs",
+              "RelativeToolTip": "MyQuery\\Models\\RequestedQueryModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-15T16:34:09.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\LoginModel.cs",
+              "RelativeDocumentMoniker": "MyQuery\\Models\\LoginModel.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\LoginModel.cs",
+              "RelativeToolTip": "MyQuery\\Models\\LoginModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-15T16:34:05.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "MyQuery\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "MyQuery\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-15T16:33:36.068Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "MyQuery\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "MyQuery\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAkwH0AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-25T13:46:46.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "MyQuery\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "MyQuery\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-25T13:46:32.404Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Controllers\\DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "MyQuery\\Controllers\\DashboardController.cs",
-              "ToolTip": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "MyQuery\\Controllers\\DashboardController.cs",
-              "ViewState": "AQIAAIIAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-25T13:46:32.739Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
+              "Title": "DataAppsModel.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\DataAppsModel.cs",
+              "RelativeDocumentMoniker": "MyQuery\\Models\\DataAppsModel.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Models\\DataAppsModel.cs",
+              "RelativeToolTip": "MyQuery\\Models\\DataAppsModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-15T16:33:50.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "MyQuery\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "MyQuery\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAkwH0AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-25T13:46:46.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "MyQuery\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "MyQuery\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABjAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-25T13:25:26.723Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "MyQuery\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "MyQuery\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-25T13:46:32.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "MyQuery\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Zephyrus G14\\Documents\\MyQuery\\MyQuery\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Zephyrus G14\\OneDrive\\Documents\\github\\myquery_mssql_executor\\MyQuery\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "MyQuery\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAADMAAAAAAAAAAAAAAEYAAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-25T13:24:58.712Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-25T13:24:58.712Z"
             }
           ]
         }

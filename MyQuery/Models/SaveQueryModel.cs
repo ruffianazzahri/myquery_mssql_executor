@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Synergy_Test.Models
+namespace MyQuery.Models
 {
     public class SaveQueryModel
     {

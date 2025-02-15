@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Synergy_Test.Function;
-using Synergy_Test.Models;
+using MyQuery.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Security.Cryptography.Xml;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
